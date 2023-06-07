@@ -1,0 +1,14 @@
+{
+  "name": "espanol",
+  "version": "1.0.0",
+  "description": "Spanish vocabulary app",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "author": "Rokas Misevicius",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^25.0.1"
+  }
+}
