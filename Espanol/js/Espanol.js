@@ -1,3 +1,5 @@
-let app = document.getElementById("app");
-
+class Espanol {
+  static app = document.getElementById("app");
+  static page = "";
+}
 app.appendChild(MainMenu.display());
