@@ -4,5 +4,7 @@ app.addEventListener("click", (e) => {
   //   console.log(targetID);
   if (Espanol.page == "MainMenu") {
     MainMenu.run(targetID);
+  } else if (Espanol.page == "Numbers") {
+    Numbers.run(targetID);
   }
 });

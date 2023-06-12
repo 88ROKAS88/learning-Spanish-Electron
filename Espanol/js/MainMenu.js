@@ -9,10 +9,13 @@ class MainMenu {
     container.appendChild(CreateElement.button("Settings"));
     container.appendChild(CreateElement.button("About"));
 
-    return container;
+    Espanol.app.appendChild(container);
   }
 
   static run(variable) {
     console.log("MAIN MENU " + variable);
+    if (variable == "Numbers") {
+      Numbers.display();
+    }
   }
 }
