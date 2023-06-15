@@ -8,5 +8,7 @@ app.addEventListener("click", (e) => {
     Numbers.run(targetID);
   } else if (Espanol.page == "Results") {
     Results.run(targetID);
+  } else if (Espanol.page == "Statistics") {
+    Results.run(targetID);
   }
 });

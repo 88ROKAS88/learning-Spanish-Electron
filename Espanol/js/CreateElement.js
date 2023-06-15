@@ -49,4 +49,36 @@ class CreateElement {
     div.appendChild(button);
     return div;
   }
+
+  // #### THEAD ####
+  static thead(thNames) {
+    // THEAD
+    let thead = document.createElement("thead");
+    let tHeadRow = document.createElement("tr");
+    // TH
+    thNames.forEach((item, index) => {
+      let th = document.createElement("th");
+      th.setAttribute("scope", "col");
+      th.innerText = item;
+      tHeadRow.appendChild(th);
+    });
+
+    thead.appendChild(tHeadRow);
+    return thead;
+  }
+
+  // #### TR ####
+  static tr(data) {
+    // TR
+    let tr = document.createElement("tr");
+    // TD
+    data.forEach((item, index) => {
+      let td = document.createElement("td");
+      // td.setAttribute("scope", "col");
+      td.innerText = item;
+      tr.appendChild(td);
+    });
+
+    return tr;
+  }
 }

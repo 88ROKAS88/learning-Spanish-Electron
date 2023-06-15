@@ -2,6 +2,7 @@ const fs = require("fs");
 
 class MyFiles {
   static staticProperty = "someValue";
+  static dateISO = new Date().toISOString().split("T")[0];
 
   static loadJson(path) {
     let rawdata = fs.readFileSync(path);

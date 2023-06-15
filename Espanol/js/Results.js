@@ -16,6 +16,12 @@ class Results {
     });
 
     Espanol.app.appendChild(container);
+
+    Statistics.saveNumberStatistic([
+      freshData[0]["b"],
+      freshData[1]["b"],
+      freshData[2]["b"],
+    ]);
   }
 
   static run(variable) {
