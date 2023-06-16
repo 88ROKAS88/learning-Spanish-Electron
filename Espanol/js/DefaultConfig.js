@@ -2,6 +2,7 @@ class DefaultConfig {
   static path = "./";
   static jsonDir = DefaultConfig.getJsonDir();
   static emptyStatistics = { Numbers: [] };
+  static numbers = { numberOfQuestions: 3 };
   // static statistics = Statistics.getStatistics();
 
   static getJsonDir() {

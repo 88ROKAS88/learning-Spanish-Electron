@@ -1,18 +1,7 @@
 class Numbers {
   static currentQuestion = 0;
-  static data = [
-    { e: "zero", s: "cero" },
-    { e: "one", s: "uno" },
-    // { e: "two", s: "dos" },
-    // { e: "three", s: "tres" },
-    // { e: "four", s: "cuatro" },
-    // { e: "five", s: "cinco" },
-    // { e: "six", s: "seis" },
-    // { e: "seven", s: "siete" },
-    // { e: "eight", s: "ocho" },
-    // { e: "nine", s: "nueve" },
-    // { e: "ten", s: "diez" },
-  ];
+  static rawData = MyData.numbers;
+  static data = [];
 
   static results = [
     { a: "Questions", b: Numbers.data.length },
@@ -24,6 +13,20 @@ class Numbers {
     document.querySelector('[espanol = "Question"]').innerText =
       Numbers.data[Numbers.currentQuestion]["e"];
     document.querySelector('[espanol = "AnswerImput"]').value = "";
+  }
+
+  static getQuestions() {
+    Numbers.data = [];
+    let array = Numbers.rawData;
+    // shuffle
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    // get necesary amount of questions
+    for (let i = 0; i < DefaultConfig.numbers["numberOfQuestions"]; i++) {
+      Numbers.data[i] = array[i];
+    }
   }
 
   static validation(input) {
@@ -55,6 +58,7 @@ class Numbers {
   static display() {
     Espanol.app.innerHTML = "";
     Espanol.page = "Numbers";
+    Numbers.getQuestions();
     Numbers.currentQuestion = 0;
     Numbers.results[1]["b"] = 0;
     Numbers.results[2]["b"] = 0;

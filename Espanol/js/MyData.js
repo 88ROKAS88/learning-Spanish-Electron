@@ -1,0 +1,25 @@
+class MyData {
+  static numbers = [
+    { n: 0, e: "zero", s: "cero" },
+    { n: 1, e: "one", s: "uno" },
+    { n: 2, e: "two", s: "dos" },
+    { n: 3, e: "three", s: "tres" },
+    { n: 4, e: "four", s: "cuatro" },
+    { n: 5, e: "five", s: "cinco" },
+    { n: 6, e: "six", s: "seis" },
+    { n: 7, e: "seven", s: "siete" },
+    { n: 8, e: "eight", s: "ocho" },
+    { n: 9, e: "nine", s: "nueve" },
+    { n: 10, e: "ten", s: "diez" },
+    { n: 11, e: "eleven", s: "once" },
+    { n: 12, e: "twelve", s: "doce" },
+    { n: 13, e: "thirteen", s: "trece" },
+    { n: 14, e: "fourteen", s: "catorce" },
+    { n: 15, e: "fifteen", s: "quince" },
+    { n: 16, e: "sixteen", s: "dieciseis" },
+    { n: 17, e: "seventeen", s: "diecisiete" },
+    { n: 18, e: "eighteen", s: "dieciocho" },
+    { n: 19, e: "nineteen", s: "diecinueve" },
+    { n: 20, e: "twenty", s: "veinte" },
+  ];
+}
