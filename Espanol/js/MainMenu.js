@@ -19,6 +19,8 @@ class MainMenu {
       Numbers.display();
     } else if (variable == "Statistics") {
       Statistics.display();
+    } else if (variable == "Settings") {
+      Settings.display();
     }
   }
 }

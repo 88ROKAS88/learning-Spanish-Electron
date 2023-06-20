@@ -9,6 +9,8 @@ app.addEventListener("click", (e) => {
   } else if (Espanol.page == "Results") {
     Results.run(targetID);
   } else if (Espanol.page == "Statistics") {
-    Results.run(targetID);
+    Statistics.run(targetID);
+  } else if (Espanol.page == "Settings") {
+    Settings.run(targetID);
   }
 });

@@ -60,6 +60,7 @@ class Numbers {
     Espanol.page = "Numbers";
     Numbers.getQuestions();
     Numbers.currentQuestion = 0;
+    Numbers.results[0]["b"] = Numbers.data.length;
     Numbers.results[1]["b"] = 0;
     Numbers.results[2]["b"] = 0;
     let container = document.createElement("div");

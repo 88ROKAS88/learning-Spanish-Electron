@@ -33,20 +33,46 @@ class CreateElement {
     // DIV
     let div = document.createElement("div");
     div.classList.add("my-1", "input-group");
-    // BUTTON
-    let button = document.createElement("button");
-    button.setAttribute("type", "button");
-    button.setAttribute("espanol", "Submit");
-    button.classList.add("btn", "btn-outline-secondary");
-    button.innerText = "Submit";
+
     // INPUT
     let input = document.createElement("input");
     input.setAttribute("type", "text");
     input.setAttribute("espanol", "AnswerImput");
     input.classList.add("form-control");
 
+    // BUTTON
+    let button = document.createElement("button");
+    button.setAttribute("type", "button");
+    button.setAttribute("espanol", "Submit");
+    button.classList.add("btn", "btn-outline-secondary");
+    button.innerText = "Submit";
+
     div.appendChild(input);
     div.appendChild(button);
+    return div;
+  }
+
+  // #### SETTINGS INPUT ####
+  static settingsInput(title, attirbuteValue, value) {
+    // DIV
+    let div = document.createElement("div");
+    div.classList.add("my-1", "input-group");
+    // SPAN
+    let span = document.createElement("span");
+    span.innerText = title;
+    // button.setAttribute("type", "button");
+    // button.setAttribute("espanol", "Submit");
+    span.classList.add("input-group-text");
+    // span.innerText = "Submit";
+    // INPUT
+    let input = document.createElement("input");
+    input.setAttribute("type", "number");
+    input.setAttribute("espanol", attirbuteValue);
+    input.classList.add("form-control");
+    input.value = value;
+
+    div.appendChild(span);
+    div.appendChild(input);
     return div;
   }
 
