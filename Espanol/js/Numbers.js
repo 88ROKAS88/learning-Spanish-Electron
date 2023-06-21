@@ -10,6 +10,8 @@ class Numbers {
   ];
 
   static questions() {
+    document.querySelector('[espanol = "QuestionNumber"]').innerText =
+      Numbers.currentQuestion + 1 + " / " + Numbers.data.length;
     document.querySelector('[espanol = "Question"]').innerText =
       Numbers.data[Numbers.currentQuestion]["e"];
     document.querySelector('[espanol = "AnswerImput"]').value = "";
@@ -67,6 +69,18 @@ class Numbers {
     container.classList.add("container", "my-5", "d-flex", "flex-column");
 
     container.appendChild(CreateElement.backButton());
+
+    container.appendChild(
+      CreateElement.header1(
+        "QuestionNumber",
+        Numbers.currentQuestion + 1 + " / " + Numbers.data.length
+      )
+    );
+
+    container.appendChild(
+      CreateElement.header1("Title", "Translate English to Spanish")
+    );
+
     container.appendChild(
       CreateElement.header1(
         "Question",
