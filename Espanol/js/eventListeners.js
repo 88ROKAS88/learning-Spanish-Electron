@@ -14,3 +14,9 @@ app.addEventListener("click", (e) => {
     Settings.run(targetID);
   }
 });
+
+window.addEventListener("keydown", (e) => {
+  if (Espanol.page == "Numbers") {
+    if (e.key == "Enter") Numbers.run("Submit");
+  }
+});
