@@ -1,5 +1,6 @@
 class Numbers {
   static currentQuestion = 0;
+  static mistakes = [];
   static rawData = MyData.numbers;
   static data = [];
 
@@ -28,18 +29,21 @@ class Numbers {
     // get necesary amount of questions
     for (let i = 0; i < DefaultConfig.numbers["numberOfQuestions"]; i++) {
       Numbers.data[i] = array[i];
+
+      Numbers.mistakes[i] = { n: array[i]["n"], c: 0, m: 0 }; // Number , Corrrect , Mistake
     }
   }
 
   static validation(input) {
     if (input.value == Numbers.data[Numbers.currentQuestion]["s"]) {
       // IS VALID
+      Numbers.mistakes[Numbers.currentQuestion]["c"]++;
       input.classList.add("is-valid");
       Numbers.currentQuestion++;
       Numbers.results[1]["b"]++;
       if (Numbers.currentQuestion >= Numbers.data.length) {
         console.log("RESULTS");
-        Results.display(Numbers.results);
+        Results.display(Numbers.results, Numbers.mistakes);
       } else {
         Numbers.questions();
         setTimeout(() => {
@@ -49,6 +53,7 @@ class Numbers {
     } else {
       // IS INVALID
       input.classList.add("is-invalid");
+      Numbers.mistakes[Numbers.currentQuestion]["m"]++;
       Numbers.results[2]["b"]++;
 
       setTimeout(() => {
@@ -60,6 +65,7 @@ class Numbers {
   static display() {
     Espanol.app.innerHTML = "";
     Espanol.page = "Numbers";
+    Numbers.mistakes = [];
     Numbers.getQuestions();
     Numbers.currentQuestion = 0;
     Numbers.results[0]["b"] = Numbers.data.length;

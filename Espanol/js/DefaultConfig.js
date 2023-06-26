@@ -5,7 +5,7 @@ class DefaultConfig {
 
   // DEFAULT VALUES
   static defaultNumbers = { numberOfQuestions: 3 };
-  static emptyStatistics = { Numbers: [] };
+  static emptyStatistics = { Numbers: [], numersMistakes: [] };
 
   static numbers = DefaultConfig.loadOrCreateFile(
     DefaultConfig.numbersPath,

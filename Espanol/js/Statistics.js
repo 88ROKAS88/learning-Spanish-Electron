@@ -42,15 +42,13 @@ class Statistics {
     Espanol.app.appendChild(container);
   }
 
-  static saveNumberStatistic(results) {
+  static saveNumberStatistic(results, mistakes) {
     let data = Statistics.getStatistics();
-    console.log(data["Numbers"][data["Numbers"].length - 1]);
-    // console.log("saving statistics in updated row");
+    // DAYS STATISTICS
     if (data["Numbers"][data["Numbers"].length - 1][0] == MyFiles.dateISO) {
       data["Numbers"][data["Numbers"].length - 1][1] += results[0];
       data["Numbers"][data["Numbers"].length - 1][2] += results[1];
       data["Numbers"][data["Numbers"].length - 1][3] += results[2];
-      console.log("saving statistics in updated row");
     } else {
       data["Numbers"].push([
         MyFiles.dateISO,
@@ -58,8 +56,17 @@ class Statistics {
         results[1],
         results[2],
       ]);
-      console.log("saving statistics in new row");
     }
+    // MISTAKES STATISTICS
+    mistakes.forEach((item, index) => {
+      if (data["numersMistakes"][item["n"]]) {
+        data["numersMistakes"][item["n"]]["c"] += item["c"];
+        data["numersMistakes"][item["n"]]["m"] += item["m"];
+      } else {
+        data["numersMistakes"][item["n"]] = item;
+      }
+    });
+    // SAVE TO FILE
     MyFiles.saveJson(data, DefaultConfig.jsonDir + "/statistics.json");
   }
 
