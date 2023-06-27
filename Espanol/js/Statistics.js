@@ -16,7 +16,9 @@ class Statistics {
   static display() {
     Espanol.app.innerHTML = "";
     Espanol.page = "Statistics";
+    let statisticsData = Statistics.getStatistics();
 
+    // TABLE 1
     // CONTAINER
     let container = document.createElement("div");
     container.classList.add("container", "my-5", "d-flex", "flex-column");
@@ -33,12 +35,31 @@ class Statistics {
     // TBODY
     let tbody = document.createElement("tbody");
 
-    Statistics.getStatistics()["Numbers"].forEach((item, index) => {
+    statisticsData["Numbers"].forEach((item, index) => {
       tbody.appendChild(CreateElement.tr([item[0], item[1], item[2], item[3]]));
     });
     table.appendChild(tbody);
 
     container.appendChild(table);
+
+    // TABLE 2
+    // TABLE
+    let table2 = document.createElement("table");
+    table2.classList.add("table");
+    // THEAD
+    table2.appendChild(CreateElement.thead(["Number", "Correct", "Incorrect"]));
+    // TBODY
+    let tbody2 = document.createElement("tbody");
+
+    statisticsData["numersMistakes"].forEach((item, index) => {
+      if (item) {
+        tbody2.appendChild(CreateElement.tr([item["n"], item["c"], item["m"]]));
+      }
+    });
+    table2.appendChild(tbody2);
+
+    container.appendChild(table2);
+
     Espanol.app.appendChild(container);
   }
 
