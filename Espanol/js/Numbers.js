@@ -21,17 +21,37 @@ class Numbers {
   static getQuestions() {
     Numbers.data = [];
     let array = Numbers.rawData;
+    let randomQuestions = +DefaultConfig.numbers["numberOfQuestions"];
     // shuffle
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
     // get necesary amount of questions
-    for (let i = 0; i < DefaultConfig.numbers["numberOfQuestions"]; i++) {
+    for (let i = 0; i < randomQuestions; i++) {
       Numbers.data[i] = array[i];
 
       Numbers.mistakes[i] = { n: array[i]["n"], c: 0, m: 0 }; // Number , Corrrect , Mistake
     }
+
+    // add never asked questions
+    let statisticsData = Statistics.getStatistics();
+    let j = 0;
+    let index = randomQuestions;
+    while (j < 3) {
+      if (statisticsData["numersMistakes"][array[index]["n"]] == null) {
+        j++;
+        Numbers.data[randomQuestions - 1 + j] = array[index];
+
+        Numbers.mistakes[randomQuestions - 1 + j] = {
+          n: array[index]["n"],
+          c: 0,
+          m: 0,
+        }; // Number , Corrrect , Mistake
+      }
+      index++;
+    }
+    console.log(Numbers.data);
   }
 
   static validation(input) {

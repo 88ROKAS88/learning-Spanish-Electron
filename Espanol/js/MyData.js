@@ -25,7 +25,7 @@ class MyData {
     { n: 22, e: "twenty two", s: "Veintidos" },
     { n: 23, e: "twenty three", s: "veintitres" },
     { n: 24, e: "twenty four", s: "veinticuatro" },
-    { n: 25, e: "twenty five", s: "Veinticinco" },
+    { n: 25, e: "twenty five", s: "veinticinco" },
     { n: 26, e: "twenty six", s: "veintiseis" },
     { n: 27, e: "twenty seven", s: "veintisiete" },
     { n: 28, e: "twenty eight", s: "veintiocho" },
