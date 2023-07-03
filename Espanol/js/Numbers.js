@@ -76,6 +76,16 @@ class Numbers {
       Numbers.mistakes[Numbers.currentQuestion]["m"]++;
       Numbers.results[2]["b"]++;
 
+      if (Numbers.mistakes[Numbers.currentQuestion]["m"] > 2) {
+        Numbers.currentQuestion++;
+        if (Numbers.currentQuestion >= Numbers.data.length) {
+          console.log("RESULTS");
+          Results.display(Numbers.results, Numbers.mistakes);
+        } else {
+          Numbers.questions();
+        }
+      }
+
       setTimeout(() => {
         input.classList.remove("is-invalid");
       }, 2000);
