@@ -18,29 +18,21 @@ class Statistics {
     Espanol.page = "Statistics";
     let statisticsData = Statistics.getStatistics();
 
-    // TABLE 1
     // CONTAINER
     let container = document.createElement("div");
     container.classList.add("container", "my-5", "d-flex", "flex-column");
 
     container.appendChild(CreateElement.backButton());
     container.appendChild(CreateElement.header1("Results", "STATISTICS"));
-    // TABLE
-    let table = document.createElement("table");
-    table.classList.add("table");
-    // THEAD
-    table.appendChild(
-      CreateElement.thead(["Date", "questions", "correct", "incorrect"])
+
+    // TABLE 1
+
+    container.appendChild(
+      CreateElement.table(
+        ["Date", "questions", "correct", "incorrect"],
+        statisticsData["Numbers"]
+      )
     );
-    // TBODY
-    let tbody = document.createElement("tbody");
-
-    statisticsData["Numbers"].forEach((item, index) => {
-      tbody.appendChild(CreateElement.tr([item[0], item[1], item[2], item[3]]));
-    });
-    table.appendChild(tbody);
-
-    container.appendChild(table);
 
     // TABLE 2
     // TABLE

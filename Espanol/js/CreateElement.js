@@ -107,4 +107,22 @@ class CreateElement {
 
     return tr;
   }
+
+  // #### TABLE ####
+  static table(thNames, data) {
+    // TABLE
+    let table = document.createElement("table");
+    table.classList.add("table");
+    // THEAD
+    table.appendChild(CreateElement.thead(thNames));
+    // TBODY
+    let tbody = document.createElement("tbody");
+
+    data.forEach((item, index) => {
+      tbody.appendChild(CreateElement.tr(item));
+    });
+    table.appendChild(tbody);
+
+    return table;
+  }
 }
