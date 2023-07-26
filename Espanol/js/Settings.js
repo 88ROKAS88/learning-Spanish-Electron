@@ -19,6 +19,22 @@ class Settings {
       )
     );
 
+    container.appendChild(
+      CreateElement.settingsInput(
+        "Lowest number in questions",
+        "numbersFrom",
+        DefaultConfig.numbers["minNumber"]
+      )
+    );
+
+    container.appendChild(
+      CreateElement.settingsInput(
+        "Biggest number in questions",
+        "numbersTo",
+        DefaultConfig.numbers["maxNumber"]
+      )
+    );
+
     container.appendChild(CreateElement.button("Save"));
 
     Espanol.app.appendChild(container);
@@ -27,12 +43,19 @@ class Settings {
   static save() {
     // GET VALUES
     // numbers
+    // number of questions
     let numberOfQuestions = document.querySelector(
       '[espanol = "numberQuestions"]'
     ).value;
+    // min number
+    let minNumber = document.querySelector('[espanol = "numbersFrom"]').value;
+    // max number
+    let maxNumber = document.querySelector('[espanol = "numbersTo"]').value;
 
     // SAVE NEW VALUES
     DefaultConfig.numbers["numberOfQuestions"] = numberOfQuestions;
+    DefaultConfig.numbers["minNumber"] = minNumber;
+    DefaultConfig.numbers["maxNumber"] = maxNumber;
 
     MyFiles.saveJson(DefaultConfig.numbers, DefaultConfig.numbersPath);
   }

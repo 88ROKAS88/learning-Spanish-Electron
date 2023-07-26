@@ -4,7 +4,11 @@ class DefaultConfig {
   static numbersPath = DefaultConfig.jsonDir + "/ns.json";
 
   // DEFAULT VALUES
-  static defaultNumbers = { numberOfQuestions: 3 };
+  static defaultNumbers = {
+    numberOfQuestions: 3,
+    minNumber: 0,
+    maxNumber: 100,
+  };
   static emptyStatistics = { Numbers: [], numersMistakes: [] };
 
   static numbers = DefaultConfig.loadOrCreateFile(

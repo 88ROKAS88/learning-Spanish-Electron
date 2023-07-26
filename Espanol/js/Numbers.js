@@ -20,8 +20,18 @@ class Numbers {
 
   static getQuestions() {
     Numbers.data = [];
-    let array = Numbers.rawData;
     let randomQuestions = +DefaultConfig.numbers["numberOfQuestions"];
+    // get necessary questions
+    // let array = Numbers.rawData;
+    let array = [];
+    for (
+      let q = +DefaultConfig.numbers["minNumber"];
+      q <= +DefaultConfig.numbers["maxNumber"];
+      q++
+    ) {
+      array.push(Numbers.rawData[q]);
+    }
+    console.log(array);
     // shuffle
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -39,6 +49,9 @@ class Numbers {
     let j = 0;
     let index = randomQuestions;
     while (j < 3) {
+      if (index >= array.length) {
+        break;
+      }
       if (statisticsData["numersMistakes"][array[index]["n"]] == null) {
         j++;
         Numbers.data[randomQuestions - 1 + j] = array[index];
