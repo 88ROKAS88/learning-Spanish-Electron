@@ -48,7 +48,8 @@ class Numbers {
     let statisticsData = Statistics.getStatistics();
     let j = 0;
     let index = randomQuestions;
-    while (j < 3) {
+    let numberOfAdditionalQuestions = 3;
+    while (j < numberOfAdditionalQuestions) {
       if (index >= array.length) {
         break;
       }

@@ -13,9 +13,17 @@ class Settings {
 
     container.appendChild(
       CreateElement.settingsInput(
-        "Number of questions",
+        "Number of random questions",
         "numberQuestions",
         DefaultConfig.numbers["numberOfQuestions"]
+      )
+    );
+
+    container.appendChild(
+      CreateElement.settingsInput(
+        "Number of additional questions",
+        "additionalQuestions",
+        DefaultConfig.numbers["additionalQuestions"]
       )
     );
 
@@ -47,6 +55,10 @@ class Settings {
     let numberOfQuestions = document.querySelector(
       '[espanol = "numberQuestions"]'
     ).value;
+    // number of additional questions
+    let additionalQuestions = document.querySelector(
+      '[espanol = "additionalQuestions"]'
+    ).value;
     // min number
     let minNumber = document.querySelector('[espanol = "numbersFrom"]').value;
     // max number
@@ -54,6 +66,7 @@ class Settings {
 
     // SAVE NEW VALUES
     DefaultConfig.numbers["numberOfQuestions"] = numberOfQuestions;
+    DefaultConfig.numbers["additionalQuestions"] = additionalQuestions;
     DefaultConfig.numbers["minNumber"] = minNumber;
     DefaultConfig.numbers["maxNumber"] = maxNumber;
 

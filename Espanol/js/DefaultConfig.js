@@ -6,6 +6,7 @@ class DefaultConfig {
   // DEFAULT VALUES
   static defaultNumbers = {
     numberOfQuestions: 3,
+    additionalQuestions: 3,
     minNumber: 0,
     maxNumber: 100,
   };
