@@ -21,50 +21,19 @@ class Numbers {
   static getQuestions() {
     Numbers.data = [];
     let randomQuestions = +DefaultConfig.numbers["numberOfQuestions"];
-    // get necessary questions
-    // let array = Numbers.rawData;
-    let array = [];
-    for (
-      let q = +DefaultConfig.numbers["minNumber"];
-      q <= +DefaultConfig.numbers["maxNumber"];
-      q++
-    ) {
-      array.push(Numbers.rawData[q]);
-    }
-    console.log(array);
-    // shuffle
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    // get necesary amount of questions
-    for (let i = 0; i < randomQuestions; i++) {
-      Numbers.data[i] = array[i];
 
-      Numbers.mistakes[i] = { n: array[i]["n"], c: 0, m: 0 }; // Number , Corrrect , Mistake
-    }
-
-    // add never asked questions
     let statisticsData = Statistics.getStatistics();
-    let j = 0;
-    let index = randomQuestions;
-    let numberOfAdditionalQuestions = 3;
-    while (j < numberOfAdditionalQuestions) {
-      if (index >= array.length) {
-        break;
-      }
-      if (statisticsData["numersMistakes"][array[index]["n"]] == null) {
-        j++;
-        Numbers.data[randomQuestions - 1 + j] = array[index];
+    let temporary = Questions.selectQuestions(
+      Numbers.rawData,
+      statisticsData["numersMistakes"],
+      +DefaultConfig.numbers["minNumber"],
+      +DefaultConfig.numbers["maxNumber"],
+      randomQuestions,
+      +DefaultConfig.numbers["additionalQuestions"]
+    );
+    Numbers.data = temporary[0];
+    Numbers.mistakes = temporary[1];
 
-        Numbers.mistakes[randomQuestions - 1 + j] = {
-          n: array[index]["n"],
-          c: 0,
-          m: 0,
-        }; // Number , Corrrect , Mistake
-      }
-      index++;
-    }
     console.log(Numbers.data);
   }
 
