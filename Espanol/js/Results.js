@@ -1,6 +1,6 @@
 class Results {
   static data = [];
-  static display(freshData, mistakes) {
+  static display(mistakes) {
     Espanol.app.innerHTML = "";
     Espanol.page = "Results";
     let container = document.createElement("div");
@@ -8,18 +8,18 @@ class Results {
 
     container.appendChild(CreateElement.backButton());
     container.appendChild(CreateElement.header1("Results", "RESULTS"));
-    console.log(freshData);
     console.log(mistakes);
-    freshData.forEach((item, index) => {
-      container.appendChild(
-        CreateElement.header1("Results", item.a + " " + item.b)
-      );
-    });
 
     Espanol.app.appendChild(container);
 
+    let correctAnswers = 0;
+    let incorrectAnswers = 0;
+    mistakes.forEach((item, index) => {
+      correctAnswers += item["c"];
+      incorrectAnswers += item["m"];
+    });
     Statistics.saveNumberStatistic(
-      [freshData[0]["b"], freshData[1]["b"], freshData[2]["b"]],
+      [mistakes.length, correctAnswers, incorrectAnswers],
       mistakes
     );
   }
