@@ -10,6 +10,10 @@ class Results {
     container.appendChild(CreateElement.header1("Results", "RESULTS"));
     console.log(mistakes);
 
+    container.appendChild(
+      CreateElement.tableMistakes(["Number", "Correct", "Incorrect"], mistakes)
+    );
+
     Espanol.app.appendChild(container);
 
     let correctAnswers = 0;

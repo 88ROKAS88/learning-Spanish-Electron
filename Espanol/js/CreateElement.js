@@ -125,4 +125,24 @@ class CreateElement {
 
     return table;
   }
+
+  // #### TABLE MISTAKES ####
+  static tableMistakes(thNames, data) {
+    // TABLE
+    let table = document.createElement("table");
+    table.classList.add("table");
+    // THEAD
+    table.appendChild(CreateElement.thead(thNames));
+    // TBODY
+    let tbody = document.createElement("tbody");
+
+    data.forEach((item, index) => {
+      if (item) {
+        tbody.appendChild(CreateElement.tr([item["n"], item["c"], item["m"]]));
+      }
+    });
+    table.appendChild(tbody);
+
+    return table;
+  }
 }
