@@ -35,22 +35,13 @@ class Statistics {
     );
 
     // TABLE 2
-    // TABLE
-    let table2 = document.createElement("table");
-    table2.classList.add("table");
-    // THEAD
-    table2.appendChild(CreateElement.thead(["Number", "Correct", "Incorrect"]));
-    // TBODY
-    let tbody2 = document.createElement("tbody");
 
-    statisticsData["numersMistakes"].forEach((item, index) => {
-      if (item) {
-        tbody2.appendChild(CreateElement.tr([item["n"], item["c"], item["m"]]));
-      }
-    });
-    table2.appendChild(tbody2);
-
-    container.appendChild(table2);
+    container.appendChild(
+      CreateElement.tableMistakes(
+        ["Number", "Correct", "Incorrect"],
+        statisticsData["numersMistakes"]
+      )
+    );
 
     Espanol.app.appendChild(container);
   }
