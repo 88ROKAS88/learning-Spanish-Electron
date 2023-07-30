@@ -6,6 +6,8 @@ app.addEventListener("click", (e) => {
     MainMenu.run(targetID);
   } else if (Espanol.page == "Numbers") {
     Numbers.run(targetID);
+  } else if (Espanol.page == "Words") {
+    Words.run(targetID);
   } else if (Espanol.page == "Results") {
     Results.run(targetID);
   } else if (Espanol.page == "Statistics") {
@@ -18,5 +20,7 @@ app.addEventListener("click", (e) => {
 window.addEventListener("keydown", (e) => {
   if (Espanol.page == "Numbers") {
     if (e.key == "Enter") Numbers.run("Submit");
+  } else if (Espanol.page == "Words") {
+    if (e.key == "Enter") Words.run("Submit");
   }
 });

@@ -102,4 +102,24 @@ class MyData {
     { n: 99, e: "ninety nine", s: "noventa y nueve" },
     { n: 100, e: "hundred", s: "cien" },
   ];
+  static words = [
+    { n: 0, e: "hello", s: "hola" },
+    { n: 1, e: "yes", s: "si" },
+    { n: 2, e: "no", s: "no" },
+    { n: 3, e: "I", s: "yo" },
+    { n: 4, e: "you", s: "tu" },
+    { n: 5, e: "I'm", s: "soy" },
+    { n: 6, e: "he", s: "el" },
+    { n: 7, e: "she", s: "ella" },
+    { n: 8, e: "old", s: "viejo" },
+    { n: 9, e: "young", s: "joven" },
+    { n: 10, e: "please", s: "por favor" },
+    { n: 11, e: "thank you", s: "gracias" },
+    { n: 12, e: "excuse me", s: "disculpe" },
+    { n: 13, e: "where", s: "donde" },
+    { n: 14, e: "who", s: "quien" },
+    { n: 15, e: "what", s: "que" },
+    { n: 16, e: "how", s: "como" },
+    { n: 17, e: "why", s: "por que" },
+  ];
 }

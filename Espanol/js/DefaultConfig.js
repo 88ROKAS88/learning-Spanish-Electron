@@ -10,7 +10,11 @@ class DefaultConfig {
     minNumber: 0,
     maxNumber: 100,
   };
-  static emptyStatistics = { Numbers: [], numersMistakes: [] };
+  static emptyStatistics = {
+    Numbers: [],
+    numersMistakes: [],
+    wordsMistakes: [],
+  };
 
   static numbers = DefaultConfig.loadOrCreateFile(
     DefaultConfig.numbersPath,

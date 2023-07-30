@@ -62,12 +62,18 @@ class Statistics {
       ]);
     }
     // MISTAKES STATISTICS
+    let whichMistakes = "";
+    if (Espanol.page == "Numbers") {
+      whichMistakes = "numersMistakes";
+    } else if (Espanol.page == "Words") {
+      whichMistakes = "wordsMistakes";
+    }
     mistakes.forEach((item, index) => {
-      if (data["numersMistakes"][item["n"]]) {
-        data["numersMistakes"][item["n"]]["c"] += item["c"];
-        data["numersMistakes"][item["n"]]["m"] += item["m"];
+      if (data[whichMistakes][item["n"]]) {
+        data[whichMistakes][item["n"]]["c"] += item["c"];
+        data[whichMistakes][item["n"]]["m"] += item["m"];
       } else {
-        data["numersMistakes"][item["n"]] = item;
+        data[whichMistakes][item["n"]] = item;
       }
     });
     // SAVE TO FILE

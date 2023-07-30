@@ -6,6 +6,7 @@ class MainMenu {
     container.classList.add("container", "my-5", "d-flex", "flex-column");
 
     container.appendChild(CreateElement.button("Numbers"));
+    container.appendChild(CreateElement.button("Words"));
     container.appendChild(CreateElement.button("Statistics"));
     container.appendChild(CreateElement.button("Settings"));
     container.appendChild(CreateElement.button("About"));
@@ -17,6 +18,8 @@ class MainMenu {
     console.log("MAIN MENU " + variable);
     if (variable == "Numbers") {
       Numbers.display();
+    } else if (variable == "Words") {
+      Words.display();
     } else if (variable == "Statistics") {
       Statistics.display();
     } else if (variable == "Settings") {

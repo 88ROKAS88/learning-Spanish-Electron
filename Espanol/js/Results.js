@@ -2,7 +2,7 @@ class Results {
   static data = [];
   static display(mistakes) {
     Espanol.app.innerHTML = "";
-    Espanol.page = "Results";
+    // Espanol.page = "Results";
     let container = document.createElement("div");
     container.classList.add("container", "my-5", "d-flex", "flex-column");
 
@@ -22,10 +22,13 @@ class Results {
       correctAnswers += item["c"];
       incorrectAnswers += item["m"];
     });
+    // if (Espanol.page == "Numbers") {
+    // console.log("save number mistakes");
     Statistics.saveNumberStatistic(
       [mistakes.length, correctAnswers, incorrectAnswers],
       mistakes
     );
+    // }
   }
 
   static run(variable) {
