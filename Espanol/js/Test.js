@@ -10,7 +10,7 @@ class Test {
     this.gui["counter"].innerText =
       this.currentQuestion + 1 + " / " + this.questions.length;
     this.gui["question"].innerText = this.questions[this.currentQuestion]["e"];
-    this.gui["input"].value = "";
+    document.querySelector('[espanol = "AnswerImput"]').value = "";
   }
 
   validateAnswer(input) {
@@ -75,11 +75,10 @@ class Test {
     );
     container.appendChild(question);
 
-    const input = CreateElement.answerInput();
-    container.appendChild(input);
+    container.appendChild(CreateElement.answerInput());
 
     Espanol.app.appendChild(container);
 
-    return { counter: counter, question: question, input: input };
+    return { counter: counter, question: question };
   }
 }
