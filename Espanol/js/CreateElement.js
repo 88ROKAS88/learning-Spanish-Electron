@@ -145,4 +145,32 @@ class CreateElement {
 
     return table;
   }
+
+  // #### NAV TABS ITEM ####
+  static navTabsItem(tabName) {
+    let navTab = document.createElement("li");
+    navTab.classList.add("nav-item");
+
+    let a = document.createElement("a");
+    a.classList.add("nav-link");
+    a.setAttribute("espanol", tabName);
+    a.innerText = tabName;
+
+    navTab.appendChild(a);
+
+    return navTab;
+  }
+
+  // #### NAV TABS ####
+  static navTabs(tabNameArray) {
+    // NAV TABS
+    let navTabs = document.createElement("ul");
+    navTabs.classList.add("nav", "nav-tabs");
+
+    tabNameArray.forEach((item, index) => {
+      navTabs.appendChild(CreateElement.navTabsItem(item));
+    });
+
+    return navTabs;
+  }
 }

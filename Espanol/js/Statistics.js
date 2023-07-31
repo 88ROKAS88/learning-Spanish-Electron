@@ -1,5 +1,8 @@
 class Statistics {
   static data = [];
+  static currentTab = "Days";
+  static container;
+  static statisticsData = [];
 
   static getStatistics() {
     if (fs.existsSync(DefaultConfig.jsonDir + "/statistics.json")) {
@@ -13,37 +16,91 @@ class Statistics {
     }
   }
 
+  static removeCurrentTable(newTab) {
+    document
+      .querySelector('[espanol = "' + Statistics.currentTab + '"]')
+      .classList.remove("active");
+    document.querySelector("table").remove();
+
+    Statistics.currentTab = newTab;
+    document
+      .querySelector('[espanol = "' + Statistics.currentTab + '"]')
+      .classList.add("active");
+  }
+
+  static displayDays() {
+    // document.querySelector('[espanol = "Days"]').classList.add("active");
+
+    // TABLE
+    Statistics.container.appendChild(
+      CreateElement.table(
+        ["Date", "questions", "correct", "incorrect"],
+        Statistics.statisticsData["Numbers"]
+      )
+    );
+  }
+
+  static displayNumbers() {
+    // TABLE
+
+    Statistics.container.appendChild(
+      CreateElement.tableMistakes(
+        ["Number", "Correct", "Incorrect"],
+        Statistics.statisticsData["numersMistakes"]
+      )
+    );
+  }
+
+  static displayWords() {
+    // TABLE
+
+    Statistics.container.appendChild(
+      CreateElement.tableMistakes(
+        ["Word", "Correct", "Incorrect"],
+        Statistics.statisticsData["wordsMistakes"]
+      )
+    );
+  }
+
   static display() {
     Espanol.app.innerHTML = "";
     Espanol.page = "Statistics";
-    let statisticsData = Statistics.getStatistics();
+    Statistics.statisticsData = Statistics.getStatistics();
 
     // CONTAINER
     let container = document.createElement("div");
     container.classList.add("container", "my-5", "d-flex", "flex-column");
+    Statistics.container = container;
 
     container.appendChild(CreateElement.backButton());
     container.appendChild(CreateElement.header1("Results", "STATISTICS"));
 
+    Espanol.app.appendChild(container);
+    // NAV TABS
+    container.appendChild(CreateElement.navTabs(["Days", "Numbers", "Words"]));
+
+    // TABLE
+
+    Statistics.displayDays();
+
+    document.querySelector('[espanol = "Days"]').classList.add("active");
     // TABLE 1
 
-    container.appendChild(
-      CreateElement.table(
-        ["Date", "questions", "correct", "incorrect"],
-        statisticsData["Numbers"]
-      )
-    );
+    // container.appendChild(
+    //   CreateElement.table(
+    //     ["Date", "questions", "correct", "incorrect"],
+    //     statisticsData["Numbers"]
+    //   )
+    // );
 
-    // TABLE 2
+    // // TABLE 2
 
-    container.appendChild(
-      CreateElement.tableMistakes(
-        ["Number", "Correct", "Incorrect"],
-        statisticsData["numersMistakes"]
-      )
-    );
-
-    Espanol.app.appendChild(container);
+    // container.appendChild(
+    //   CreateElement.tableMistakes(
+    //     ["Number", "Correct", "Incorrect"],
+    //     statisticsData["numersMistakes"]
+    //   )
+    // );
   }
 
   static saveNumberStatistic(results, mistakes) {
@@ -82,8 +139,23 @@ class Statistics {
 
   static run(variable) {
     console.log("Statistics " + variable);
-    if (variable == "Back") {
-      MainMenu.display();
+
+    switch (variable) {
+      case "Back":
+        MainMenu.display();
+        break;
+      case "Days":
+        Statistics.removeCurrentTable(variable);
+        Statistics.displayDays();
+        break;
+      case "Numbers":
+        Statistics.removeCurrentTable(variable);
+        Statistics.displayNumbers();
+        break;
+      case "Words":
+        Statistics.removeCurrentTable(variable);
+        Statistics.displayWords();
+        break;
     }
   }
 }
