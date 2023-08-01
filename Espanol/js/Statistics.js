@@ -52,13 +52,16 @@ class Statistics {
   }
 
   static displayWords() {
+    // DATA
+    let data = [];
+    Statistics.statisticsData["wordsMistakes"].forEach((item, index) => {
+      if (item) {
+        data[index] = [MyData.words[item["n"]]["s"], item["c"], item["m"]];
+      }
+    });
     // TABLE
-
     Statistics.container.appendChild(
-      CreateElement.tableMistakes(
-        ["Word", "Correct", "Incorrect"],
-        Statistics.statisticsData["wordsMistakes"]
-      )
+      CreateElement.table(["Word", "Correct", "Incorrect"], data)
     );
   }
 
