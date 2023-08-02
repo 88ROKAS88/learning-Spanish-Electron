@@ -132,8 +132,10 @@ class Statistics {
       if (data[whichMistakes][item["n"]]) {
         data[whichMistakes][item["n"]]["c"] += item["c"];
         data[whichMistakes][item["n"]]["m"] += item["m"];
+        data[whichMistakes][item["n"]]["t"] = DefaultConfig.date.getTime();
       } else {
         data[whichMistakes][item["n"]] = item;
+        data[whichMistakes][item["n"]]["t"] = DefaultConfig.date.getTime();
       }
     });
     // SAVE TO FILE

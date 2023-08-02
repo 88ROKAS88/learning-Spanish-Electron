@@ -7,6 +7,8 @@ class Questions {
     RandomQuestionAmount,
     additionalQuestionsAmount
   ) {
+    let randomAndAdditionalQAmount =
+      RandomQuestionAmount + additionalQuestionsAmount;
     let questionArray = [];
     let selectedQuestions = [];
     let questionsMistakes = [];
@@ -50,6 +52,31 @@ class Questions {
         }; // Number , Corrrect , Mistake
       }
       index++;
+    }
+
+    // add longest time not asked questions
+
+    if (selectedQuestions.length < randomAndAdditionalQAmount) {
+      // remove selected questions
+      for (let i = selectedQuestions.length - 1; i >= 0; i--) {
+        questionArray.splice(i, 1);
+      }
+      // sort questions by last time asked
+      questionArray.sort(function (a, b) {
+        return QuestionsStatistics[a.n]["t"] - QuestionsStatistics[b.n]["t"];
+      });
+      // add longest time not asked questions
+      let longTimeQuestionAmount =
+        randomAndAdditionalQAmount - selectedQuestions.length;
+      console.log(randomAndAdditionalQAmount - selectedQuestions.length);
+      for (let i = 0; i < longTimeQuestionAmount; i++) {
+        selectedQuestions.push(questionArray[i]);
+        questionsMistakes.push({
+          n: questionArray[i]["n"],
+          c: 0,
+          m: 0,
+        });
+      }
     }
 
     // Return selected questions

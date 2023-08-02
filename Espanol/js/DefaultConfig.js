@@ -1,4 +1,5 @@
 class DefaultConfig {
+  static date = new Date();
   static path = "./";
   static jsonDir = DefaultConfig.getJsonDir();
   static numbersPath = DefaultConfig.jsonDir + "/ns.json";
