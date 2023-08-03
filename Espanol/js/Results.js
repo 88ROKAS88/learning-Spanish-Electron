@@ -10,9 +10,28 @@ class Results {
     container.appendChild(CreateElement.header1("Results", "RESULTS"));
     console.log(mistakes);
 
-    container.appendChild(
-      CreateElement.tableMistakes(["Number", "Correct", "Incorrect"], mistakes)
-    );
+    if (Espanol.page == "Words") {
+      let wordsMistakes = [];
+
+      mistakes.forEach((item, index) => {
+        wordsMistakes[index] = [
+          MyData.words[item["n"]]["s"],
+          item["c"],
+          item["m"],
+        ];
+      });
+
+      container.appendChild(
+        CreateElement.table(["Words", "Correct", "Incorrect"], wordsMistakes)
+      );
+    } else {
+      container.appendChild(
+        CreateElement.tableMistakes(
+          ["Number", "Correct", "Incorrect"],
+          mistakes
+        )
+      );
+    }
 
     Espanol.app.appendChild(container);
 
