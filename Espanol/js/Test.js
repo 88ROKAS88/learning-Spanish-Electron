@@ -39,7 +39,7 @@ class Test {
         this.currentQuestion++;
         if (this.currentQuestion >= this.questions.length) {
           console.log("RESULTS");
-          Results.display(Numbers.mistakes);
+          Results.display(this.mistakes);
         } else {
           this.nextQuestion();
         }
