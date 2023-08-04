@@ -7,6 +7,7 @@ class MainMenu {
 
     container.appendChild(CreateElement.button("Numbers"));
     container.appendChild(CreateElement.button("Words"));
+    container.appendChild(CreateElement.button("Vocabulary"));
     container.appendChild(CreateElement.button("Statistics"));
     container.appendChild(CreateElement.button("Settings"));
     container.appendChild(CreateElement.button("About"));
@@ -20,6 +21,8 @@ class MainMenu {
       Numbers.display();
     } else if (variable == "Words") {
       Words.display();
+    } else if (variable == "Vocabulary") {
+      Vocabulary.display();
     } else if (variable == "Statistics") {
       Statistics.display();
     } else if (variable == "Settings") {

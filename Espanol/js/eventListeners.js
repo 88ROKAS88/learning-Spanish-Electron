@@ -8,6 +8,8 @@ app.addEventListener("click", (e) => {
     Numbers.run(targetID);
   } else if (Espanol.page == "Words") {
     Words.run(targetID);
+  } else if (Espanol.page == "Vocabulary") {
+    Vocabulary.run(targetID);
   } else if (Espanol.page == "Results") {
     Results.run(targetID);
   } else if (Espanol.page == "Statistics") {
