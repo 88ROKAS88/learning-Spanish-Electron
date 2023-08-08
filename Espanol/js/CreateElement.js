@@ -173,4 +173,18 @@ class CreateElement {
 
     return navTabs;
   }
+
+  // #### ALERT ####
+  static alert(text, type) {
+    // DIV
+    let div = document.createElement("div");
+    div.classList.add("alert", type);
+    div.innerText = text;
+    div.style.position = "fixed";
+    div.style.top = "0";
+    div.style.left = "0";
+    div.style.width = "100%";
+
+    return div;
+  }
 }

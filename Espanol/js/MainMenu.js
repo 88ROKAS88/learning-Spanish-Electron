@@ -27,6 +27,8 @@ class MainMenu {
       Statistics.display();
     } else if (variable == "Settings") {
       Settings.display();
+    } else if (variable == "About") {
+      alert = new Alert("coming soon", "alert-success");
     }
   }
 }
