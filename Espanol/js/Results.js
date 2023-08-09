@@ -25,10 +25,20 @@ class Results {
         CreateElement.table(["Words", "Correct", "Incorrect"], wordsMistakes)
       );
     } else {
+      let numbersMistakes = [];
+
+      mistakes.forEach((item, index) => {
+        numbersMistakes[index] = [
+          item["n"],
+          MyData.numbers[item["n"]]["s"],
+          item["c"],
+          item["m"],
+        ];
+      });
       container.appendChild(
-        CreateElement.tableMistakes(
-          ["Number", "Correct", "Incorrect"],
-          mistakes
+        CreateElement.table(
+          ["Number", "Spanish", "Correct", "Incorrect"],
+          numbersMistakes
         )
       );
     }
