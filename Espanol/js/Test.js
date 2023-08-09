@@ -36,6 +36,10 @@ class Test {
       //   Numbers.results[2]["b"]++;
 
       if (this.mistakes[this.currentQuestion]["m"] > 2) {
+        alert = new Alert(
+          "CORRECT ANSWER " + this.questions[this.currentQuestion]["s"],
+          "alert-danger"
+        );
         this.currentQuestion++;
         if (this.currentQuestion >= this.questions.length) {
           console.log("RESULTS");
