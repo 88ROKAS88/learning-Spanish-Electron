@@ -4,6 +4,12 @@ class Statistics {
   static container;
   static statisticsData = [];
 
+  static sucessRate(correct, incorrect) {
+    let sucess = (100 / (correct + incorrect)) * correct;
+
+    return Math.round(sucess);
+  }
+
   static getStatistics() {
     if (fs.existsSync(DefaultConfig.jsonDir + "/statistics.json")) {
       return MyFiles.loadJson(DefaultConfig.jsonDir + "/statistics.json");
@@ -41,13 +47,20 @@ class Statistics {
   }
 
   static displayNumbers() {
+    // DATA
+    let data = [];
+    Statistics.statisticsData["numersMistakes"].forEach((item, index) => {
+      if (item) {
+        data[index] = [
+          item["n"],
+          MyData.numbers[item["n"]]["s"],
+          Statistics.sucessRate(item["c"], item["m"]),
+        ];
+      }
+    });
     // TABLE
-
     Statistics.container.appendChild(
-      CreateElement.tableMistakes(
-        ["Number", "Correct", "Incorrect"],
-        Statistics.statisticsData["numersMistakes"]
-      )
+      CreateElement.table(["Number", "Spanish", "Correct %"], data)
     );
   }
 
@@ -56,12 +69,15 @@ class Statistics {
     let data = [];
     Statistics.statisticsData["wordsMistakes"].forEach((item, index) => {
       if (item) {
-        data[index] = [MyData.words[item["n"]]["s"], item["c"], item["m"]];
+        data[index] = [
+          MyData.words[item["n"]]["s"],
+          Statistics.sucessRate(item["c"], item["m"]),
+        ];
       }
     });
     // TABLE
     Statistics.container.appendChild(
-      CreateElement.table(["Word", "Correct", "Incorrect"], data)
+      CreateElement.table(["Word", "Correct %"], data)
     );
   }
 
