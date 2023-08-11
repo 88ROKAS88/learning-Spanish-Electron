@@ -21,9 +21,17 @@ class Settings {
 
     container.appendChild(
       CreateElement.settingsInput(
-        "Number of additional questions",
+        "Number of additional questions which was not asked for the longest time",
         "additionalQuestions",
         DefaultConfig.numbers["additionalQuestions"]
+      )
+    );
+
+    container.appendChild(
+      CreateElement.settingsInput(
+        "Number of additional questions with lowest correct answer %",
+        "incorrectQuestions",
+        DefaultConfig.numbers["incorrectQuestions"]
       )
     );
 
@@ -55,9 +63,13 @@ class Settings {
     let numberOfQuestions = document.querySelector(
       '[espanol = "numberQuestions"]'
     ).value;
-    // number of additional questions
+    // number of additional questions which was not asked for the longest time
     let additionalQuestions = document.querySelector(
       '[espanol = "additionalQuestions"]'
+    ).value;
+    // number of additional questions with lowest correct answer %
+    let incorrectQuestions = document.querySelector(
+      '[espanol = "incorrectQuestions"]'
     ).value;
     // min number
     let minNumber = document.querySelector('[espanol = "numbersFrom"]').value;
@@ -67,6 +79,7 @@ class Settings {
     // SAVE NEW VALUES
     DefaultConfig.numbers["numberOfQuestions"] = numberOfQuestions;
     DefaultConfig.numbers["additionalQuestions"] = additionalQuestions;
+    DefaultConfig.numbers["incorrectQuestions"] = incorrectQuestions;
     DefaultConfig.numbers["minNumber"] = minNumber;
     DefaultConfig.numbers["maxNumber"] = maxNumber;
 

@@ -8,6 +8,7 @@ class DefaultConfig {
   static defaultNumbers = {
     numberOfQuestions: 3,
     additionalQuestions: 3,
+    incorrectQuestions: 3,
     minNumber: 0,
     maxNumber: 100,
   };
