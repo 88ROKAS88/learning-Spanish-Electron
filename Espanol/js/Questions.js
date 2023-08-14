@@ -5,7 +5,8 @@ class Questions {
     QuestionsFrom,
     QuestionsTo,
     RandomQuestionAmount,
-    additionalQuestionsAmount
+    additionalQuestionsAmount,
+    additionalIncorrectQuestions
   ) {
     let randomAndAdditionalQAmount =
       RandomQuestionAmount + additionalQuestionsAmount;
@@ -66,10 +67,12 @@ class Questions {
         return QuestionsStatistics[a.n]["t"] - QuestionsStatistics[b.n]["t"];
       });
       // add longest time not asked questions
+      let addedQuestions = [];
       let longTimeQuestionAmount =
         randomAndAdditionalQAmount - selectedQuestions.length;
       console.log(randomAndAdditionalQAmount - selectedQuestions.length);
       for (let i = 0; i < longTimeQuestionAmount; i++) {
+        addedQuestions.push(i);
         selectedQuestions.push(questionArray[i]);
         questionsMistakes.push({
           n: questionArray[i]["n"],
@@ -77,6 +80,39 @@ class Questions {
           m: 0,
         });
       }
+      // remove selected questions
+      for (let i = addedQuestions.length - 1; i >= 0; i--) {
+        questionArray.splice(i, 1);
+      }
+    }
+
+    // sort questions by lowest correct answer %
+
+    if (additionalIncorrectQuestions > 0) {
+      // sort questions by most mistakes
+      questionArray.sort(function (a, b) {
+        return (
+          Statistics.sucessRate(
+            QuestionsStatistics[a.n]["c"],
+            QuestionsStatistics[a.n]["m"]
+          ) -
+          Statistics.sucessRate(
+            QuestionsStatistics[b.n]["c"],
+            QuestionsStatistics[b.n]["m"]
+          )
+        );
+      });
+
+      // add additional questions with lowest correct answer %
+      for (let i = 0; i < additionalIncorrectQuestions; i++) {
+        selectedQuestions.push(questionArray[i]);
+        questionsMistakes.push({
+          n: questionArray[i]["n"],
+          c: 0,
+          m: 0,
+        });
+      }
+      console.log(questionArray);
     }
 
     // Return selected questions

@@ -13,7 +13,8 @@ class Words {
         0,
         17,
         +DefaultConfig.numbers["numberOfQuestions"],
-        +DefaultConfig.numbers["additionalQuestions"]
+        +DefaultConfig.numbers["additionalQuestions"],
+        +DefaultConfig.numbers["incorrectQuestions"]
       )
     );
   }

@@ -13,7 +13,8 @@ class Numbers {
         +DefaultConfig.numbers["minNumber"],
         +DefaultConfig.numbers["maxNumber"],
         +DefaultConfig.numbers["numberOfQuestions"],
-        +DefaultConfig.numbers["additionalQuestions"]
+        +DefaultConfig.numbers["additionalQuestions"],
+        +DefaultConfig.numbers["incorrectQuestions"]
       )
     );
   }
