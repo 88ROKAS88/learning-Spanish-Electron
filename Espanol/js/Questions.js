@@ -89,6 +89,16 @@ class Questions {
     // sort questions by lowest correct answer %
 
     if (additionalIncorrectQuestions > 0) {
+      // remove questions w/o statistics
+      let temp = [];
+      questionArray.forEach((item, index) => {
+        if (QuestionsStatistics[item["n"]]) {
+          temp.push(item);
+        }
+      });
+
+      questionArray = temp;
+
       // sort questions by most mistakes
       questionArray.sort(function (a, b) {
         return (
