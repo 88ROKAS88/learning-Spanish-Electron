@@ -9,8 +9,8 @@ class Test {
   nextQuestion() {
     this.gui["counter"].innerText =
       this.currentQuestion + 1 + " / " + this.questions.length;
-    this.gui["question"].innerText = this.questions[this.currentQuestion]["e"];
-    document.querySelector('[espanol = "AnswerImput"]').value = "";
+    this.gui["question"].value = this.questions[this.currentQuestion]["e"];
+    this.gui["input"].value = "";
   }
 
   validateAnswer(input) {
@@ -63,26 +63,20 @@ class Test {
 
     container.appendChild(CreateElement.backButton());
 
-    const counter = CreateElement.header1(
-      "QuestionNumber",
-      this.currentQuestion + 1 + " / " + this.questions.length
-    );
-    container.appendChild(counter);
-
     container.appendChild(
       CreateElement.header1("Title", "Translate English to Spanish")
     );
-
-    const question = CreateElement.header1(
-      "Question",
-      this.questions[this.currentQuestion]["e"]
-    );
-    container.appendChild(question);
-
+    container.appendChild(CreateElement.question());
     container.appendChild(CreateElement.answerInput());
 
     Espanol.app.appendChild(container);
+    const counter = document.querySelector('[espanol = "QuestionNumber"]');
+    counter.innerText =
+      this.currentQuestion + 1 + " / " + this.questions.length;
+    const question = document.querySelector('[espanol = "Question"]');
+    question.value = this.questions[this.currentQuestion]["e"];
+    const input = document.querySelector('[espanol = "AnswerImput"]');
 
-    return { counter: counter, question: question };
+    return { counter: counter, question: question, input: input };
   }
 }

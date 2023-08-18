@@ -52,6 +52,35 @@ class CreateElement {
     return div;
   }
 
+  // #### QUESTION ####
+  static question() {
+    // DIV
+    let div = document.createElement("div");
+    div.classList.add("my-1", "input-group");
+
+    // SPAN
+    let span = document.createElement("span");
+    span.classList.add("input-group-text");
+    span.setAttribute("espanol", "QuestionNumber");
+
+    // INPUT
+    let input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("espanol", "Question");
+    input.classList.add("form-control");
+    input.disabled = true;
+
+    // SPAN
+    // let health = document.createElement("span");
+    // health.classList.add("input-group-text");
+    // health.setAttribute("espanol", "Health");
+
+    div.appendChild(span);
+    div.appendChild(input);
+    // div.appendChild(health);
+    return div;
+  }
+
   // #### SETTINGS INPUT ####
   static settingsInput(title, attirbuteValue, value) {
     // DIV
