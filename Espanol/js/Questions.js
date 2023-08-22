@@ -113,7 +113,7 @@ class Questions {
         );
       });
 
-      // add additional questions with lowest correct answer %
+      // add additional questions with lowest correct answer %      
       for (let i = 0; i < additionalIncorrectQuestions; i++) {
         selectedQuestions.push(questionArray[i]);
         questionsMistakes.push({

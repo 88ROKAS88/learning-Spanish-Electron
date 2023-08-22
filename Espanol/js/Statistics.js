@@ -124,8 +124,8 @@ class Statistics {
 
   static saveNumberStatistic(results, mistakes) {
     let data = Statistics.getStatistics();
-    // DAYS STATISTICS
-    if (data["Numbers"][data["Numbers"].length - 1][0] == MyFiles.dateISO) {
+    // DAYS STATISTICS    
+    if ( data["Numbers"].length >0 && data["Numbers"][data["Numbers"].length - 1][0] == MyFiles.dateISO) {
       data["Numbers"][data["Numbers"].length - 1][1] += results[0];
       data["Numbers"][data["Numbers"].length - 1][2] += results[1];
       data["Numbers"][data["Numbers"].length - 1][3] += results[2];
