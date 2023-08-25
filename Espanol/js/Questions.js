@@ -99,30 +99,31 @@ class Questions {
 
       questionArray = temp;
 
-      // sort questions by most mistakes
-      questionArray.sort(function (a, b) {
-        return (
-          Statistics.sucessRate(
-            QuestionsStatistics[a.n]["c"],
-            QuestionsStatistics[a.n]["m"]
-          ) -
-          Statistics.sucessRate(
-            QuestionsStatistics[b.n]["c"],
-            QuestionsStatistics[b.n]["m"]
-          )
-        );
-      });
-
-      // add additional questions with lowest correct answer %      
-      for (let i = 0; i < additionalIncorrectQuestions; i++) {
-        selectedQuestions.push(questionArray[i]);
-        questionsMistakes.push({
-          n: questionArray[i]["n"],
-          c: 0,
-          m: 0,
+      if (additionalIncorrectQuestions < questionArray.length) {
+        // sort questions by most mistakes
+        questionArray.sort(function (a, b) {
+          return (
+            Statistics.sucessRate(
+              QuestionsStatistics[a.n]["c"],
+              QuestionsStatistics[a.n]["m"]
+            ) -
+            Statistics.sucessRate(
+              QuestionsStatistics[b.n]["c"],
+              QuestionsStatistics[b.n]["m"]
+            )
+          );
         });
+
+        // add additional questions with lowest correct answer %
+        for (let i = 0; i < additionalIncorrectQuestions; i++) {
+          selectedQuestions.push(questionArray[i]);
+          questionsMistakes.push({
+            n: questionArray[i]["n"],
+            c: 0,
+            m: 0,
+          });
+        }
       }
-      console.log(questionArray);
     }
 
     // Return selected questions
