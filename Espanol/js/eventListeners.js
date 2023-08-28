@@ -16,6 +16,8 @@ app.addEventListener("click", (e) => {
     Statistics.run(targetID);
   } else if (Espanol.page == "Settings") {
     Settings.run(targetID);
+  } else if (Espanol.page == "About") {
+    About.run(targetID);
   }
 });
 
