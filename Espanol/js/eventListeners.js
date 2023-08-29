@@ -18,6 +18,8 @@ app.addEventListener("click", (e) => {
     Settings.run(targetID);
   } else if (Espanol.page == "About") {
     About.run(targetID);
+  }else if (Espanol.page == "Sentences") {
+    Sentences.run(targetID);
   }
 });
 
