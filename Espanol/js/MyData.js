@@ -121,5 +121,21 @@ class MyData {
     { n: 15, e: "what", s: "que" },
     { n: 16, e: "how", s: "como" },
     { n: 17, e: "why", s: "por que" },
+    { n: 18, e: "my", s: "mi" },
+    { n: 19, e: "name", s: "nombre" },
+    { n: 20, e: "is", s: "es" },
+    { n: 21, e: "John", s: "John" },
+    { n: 22, e: "from", s: "de" },
+    { n: 23, e: "England", s: "Inglaterra" },
+  ];
+  static sentences = [
+    {
+      n: 0,
+      e: "Hello my name is John",
+      s: "Hola, mi nombre es John",
+      w: [1, 18, 19, 20, 21],
+    },
+    { n: 1, e: "Where are you from", s: "de dónde eres", w: [] },
+    { n: 2, e: "i'm from England", s: "Soy de Inglaterra", w: [5, 22, 23] },
   ];
 }
