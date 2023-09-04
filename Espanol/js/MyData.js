@@ -134,7 +134,7 @@ class MyData {
       n: 0,
       e: "Hello my name is John",
       s: "Hola, mi nombre es John",
-      w: [1, 18, 19, 20, 21],
+      w: [0, 18, 19, 20, 21],
     },
     { n: 1, e: "Where are you from", s: "de dónde eres", w: [22, 13, 24] },
     { n: 2, e: "i'm from England", s: "Soy de Inglaterra", w: [5, 22, 23] },
