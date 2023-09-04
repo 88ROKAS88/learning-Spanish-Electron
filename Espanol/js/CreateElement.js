@@ -81,6 +81,29 @@ class CreateElement {
     return div;
   }
 
+  // #### HINT ####
+  static hint() {
+    // DIV
+    let div = document.createElement("div");
+    div.classList.add("my-1", "input-group");
+
+    // SPAN
+    let span = document.createElement("span");
+    span.classList.add("input-group-text");
+    span.setAttribute("espanol", "HintTitle");
+
+    // INPUT
+    let input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("espanol", "Hint");
+    input.classList.add("form-control");
+    input.disabled = true;
+
+    div.appendChild(span);
+    div.appendChild(input);    
+    return div;
+  }
+
   // #### SETTINGS INPUT ####
   static settingsInput(title, attirbuteValue, value) {
     // DIV
