@@ -127,6 +127,7 @@ class MyData {
     { n: 21, e: "John", s: "John" },
     { n: 22, e: "from", s: "de" },
     { n: 23, e: "England", s: "Inglaterra" },
+    { n: 24, e: "are", s: "eres" },
   ];
   static sentences = [
     {
@@ -135,7 +136,7 @@ class MyData {
       s: "Hola, mi nombre es John",
       w: [1, 18, 19, 20, 21],
     },
-    { n: 1, e: "Where are you from", s: "de dónde eres", w: [] },
+    { n: 1, e: "Where are you from", s: "de dónde eres", w: [22, 13, 24] },
     { n: 2, e: "i'm from England", s: "Soy de Inglaterra", w: [5, 22, 23] },
   ];
 }
