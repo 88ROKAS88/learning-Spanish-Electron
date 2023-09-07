@@ -9,7 +9,7 @@ class Sentences {
 
   static showHint() {
     let hint = "";
-    console.log(Sentences.questions[Sentences.currentQuestion]["w"])
+    console.log(Sentences.questions[Sentences.currentQuestion]["w"]);
 
     Sentences.questions[Sentences.currentQuestion]["w"].forEach(
       (item, index) => {
@@ -75,6 +75,11 @@ class Sentences {
     if (variable == "Submit") {
       Sentences.validateAnswer(
         document.querySelector('[espanol = "AnswerImput"]').value
+      );
+    } else if (variable == "HintTitle") {
+      alert = new Alert(
+        "HINT : " + Sentences.questions[Sentences.currentQuestion]["s"],
+        "alert-info"
       );
     } else if (variable == "Back") {
       MainMenu.display();
