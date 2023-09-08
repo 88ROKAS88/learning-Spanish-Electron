@@ -9,7 +9,6 @@ class Sentences {
 
   static showHint() {
     let hint = "";
-    console.log(Sentences.questions[Sentences.currentQuestion]["w"]);
 
     Sentences.questions[Sentences.currentQuestion]["w"].forEach(
       (item, index) => {
@@ -66,16 +65,63 @@ class Sentences {
     Sentences.input = document.querySelector('[espanol = "AnswerImput"]');
   }
 
+  static displayNextQuestion() {
+    Sentences.counter.innerText =
+      Sentences.currentQuestion + 1 + " / " + Sentences.questions.length;
+
+    Sentences.hint.value = Sentences.showHint();
+
+    Sentences.question.value =
+      Sentences.questions[Sentences.currentQuestion]["e"];
+
+    Sentences.input.value = "";
+  }
+
   static validateAnswer(answer) {
-    console.log("answer", answer);
+    let answerArray = answer.split(" ");
+    let correctAnswer = Sentences.questions[Sentences.currentQuestion]["w"];
+    console.log("answer", correctAnswer);
+    console.log("guess", answerArray);
+    // check answer length
+    if (answerArray.length == correctAnswer.length) {
+      let mistakes = 0;
+      correctAnswer.forEach((element, index) => {
+        if (
+          answerArray[index].toLowerCase() ==
+          MyData.words[element]["s"].toLowerCase()
+        ) {
+          console.log("correct element", answerArray[index]);
+        } else {
+          console.log(
+            "incorrect element",
+            answerArray[index],
+            " /= ",
+            MyData.words[element]["s"]
+          );
+        }
+      });
+      if (mistakes == 0) {
+        Sentences.currentQuestion++;
+        Sentences.displayNextQuestion();
+      } else {
+        alert = new Alert("Incorrect answer", "alert-danger");
+      }
+    } else {
+      alert = new Alert(
+        "Correct answer contains " +
+          correctAnswer.length +
+          " words. Your answer contains " +
+          answerArray.length +
+          " words.",
+        "alert-danger"
+      );
+    }
   }
 
   static run(variable) {
     console.log("SENTENCES " + variable);
     if (variable == "Submit") {
-      Sentences.validateAnswer(
-        document.querySelector('[espanol = "AnswerImput"]').value
-      );
+      Sentences.validateAnswer(Sentences.input.value);
     } else if (variable == "HintTitle") {
       alert = new Alert(
         "HINT : " + Sentences.questions[Sentences.currentQuestion]["s"],
