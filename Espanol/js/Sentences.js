@@ -102,7 +102,11 @@ class Sentences {
       });
       if (mistakes == 0) {
         Sentences.currentQuestion++;
-        Sentences.displayNextQuestion();
+        if (Sentences.currentQuestion < Sentences.questions.length) {
+          Sentences.displayNextQuestion();
+        } else {
+          Results.display([]);
+        }
       } else {
         alert = new Alert("Incorrect answer", "alert-danger");
       }
