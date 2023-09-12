@@ -42,6 +42,22 @@ class Results {
         )
       );
     } else {
+      let sentencesMistakes = [];
+
+      mistakes.forEach((item, index) => {
+        sentencesMistakes[index] = [
+          MyData.sentences[item["n"]]["s"],
+          item["c"],
+          item["m"],
+        ];
+      });
+
+      container.appendChild(
+        CreateElement.table(
+          ["Sentences", "Correct", "Incorrect"],
+          sentencesMistakes
+        )
+      );
     }
 
     Espanol.app.appendChild(container);
