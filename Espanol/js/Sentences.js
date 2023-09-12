@@ -1,6 +1,7 @@
 class Sentences {
   static questions = MyData.sentences;
   static currentQuestion = 0;
+  static mistakesForResults = [];
 
   static counter;
   static question;
@@ -33,7 +34,11 @@ class Sentences {
   static display() {
     Espanol.page = "Sentences";
     let statisticsData = Statistics.getStatistics();
-
+    Sentences.mistakesForResults = [
+      { n: 0, c: 0, m: 0 },
+      { n: 1, c: 0, m: 0 },
+      { n: 2, c: 0, m: 0 },
+    ];
     Sentences.currentQuestion = 0;
     // display
     Espanol.app.innerHTML = "";
@@ -92,6 +97,7 @@ class Sentences {
         ) {
           console.log("correct element", answerArray[index]);
         } else {
+          mistakes++;
           console.log(
             "incorrect element",
             answerArray[index],
@@ -101,13 +107,15 @@ class Sentences {
         }
       });
       if (mistakes == 0) {
+        Sentences.mistakesForResults[Sentences.currentQuestion]["c"]++;
         Sentences.currentQuestion++;
         if (Sentences.currentQuestion < Sentences.questions.length) {
           Sentences.displayNextQuestion();
         } else {
-          Results.display([]);
+          Results.display(Sentences.mistakesForResults);
         }
       } else {
+        Sentences.mistakesForResults[Sentences.currentQuestion]["m"]++;
         alert = new Alert("Incorrect answer", "alert-danger");
       }
     } else {
