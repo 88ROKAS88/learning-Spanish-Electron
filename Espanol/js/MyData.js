@@ -128,6 +128,14 @@ class MyData {
     { n: 22, e: "from", s: "de" },
     { n: 23, e: "England", s: "Inglaterra" },
     { n: 24, e: "are", s: "eres" },
+    { n: 25, e: "are (you)", s: "estas" },
+    { n: 26, e: "today", s: "hoy" },
+    { n: 27, e: "yesterday", s: "ayer" },
+    { n: 28, e: "a", s: "un" },
+    { n: 29, e: "take / drink (past)", s: "tome" },
+    { n: 30, e: "coffee", s: "cafe" },
+    { n: 31, e: "very", s: "muy" },
+    { n: 32, e: "good", s: "bueno" },
   ];
   static sentences = [
     {
@@ -138,5 +146,7 @@ class MyData {
     },
     { n: 1, e: "Where are you from", s: "de dónde eres", w: [22, 13, 24] },
     { n: 2, e: "i'm from England", s: "Soy de Inglaterra", w: [5, 22, 23] },
+    { n: 3, e: "how are you today", s: "cómo estás hoy", w: [16, 25, 26] },
+    { n: 4, e: "yesterday i drank a very good coffee", s: "ayer tomé un café muy bueno", w: [27, 29, 28,30,31,32] },
   ];
 }
