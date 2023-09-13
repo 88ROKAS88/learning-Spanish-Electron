@@ -16,6 +16,7 @@ class DefaultConfig {
     Numbers: [],
     numersMistakes: [],
     wordsMistakes: [],
+    sentencesMistakes: [],
   };
 
   static numbers = DefaultConfig.loadOrCreateFile(
