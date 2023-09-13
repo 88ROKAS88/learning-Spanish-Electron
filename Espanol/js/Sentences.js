@@ -34,11 +34,10 @@ class Sentences {
   static display() {
     Espanol.page = "Sentences";
     let statisticsData = Statistics.getStatistics();
-    Sentences.mistakesForResults = [
-      { n: 0, c: 0, m: 0 },
-      { n: 1, c: 0, m: 0 },
-      { n: 2, c: 0, m: 0 },
-    ];
+    Sentences.mistakesForResults = [];
+    for (let i = 0; i < Sentences.questions.length; i++) {
+      Sentences.mistakesForResults.push({ n: i, c: 0, m: 0 });
+    }
     Sentences.currentQuestion = 0;
     // display
     Espanol.app.innerHTML = "";
