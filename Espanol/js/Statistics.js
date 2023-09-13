@@ -81,6 +81,23 @@ class Statistics {
     );
   }
 
+  static displaySentences() {
+    // DATA
+    let data = [];
+    Statistics.statisticsData["sentencesMistakes"].forEach((item, index) => {
+      if (item) {
+        data[index] = [
+          MyData.sentences[item["n"]]["s"],
+          Statistics.sucessRate(item["c"], item["m"]),
+        ];
+      }
+    });
+    // TABLE
+    Statistics.container.appendChild(
+      CreateElement.table(["Sentence", "Correct %"], data)
+    );
+  }
+
   static display() {
     Espanol.app.innerHTML = "";
     Espanol.page = "Statistics";
@@ -96,7 +113,9 @@ class Statistics {
 
     Espanol.app.appendChild(container);
     // NAV TABS
-    container.appendChild(CreateElement.navTabs(["Days", "Numbers", "Words"]));
+    container.appendChild(
+      CreateElement.navTabs(["Days", "Numbers", "Words", "Sentences"])
+    );
 
     // TABLE
 
@@ -124,8 +143,11 @@ class Statistics {
 
   static saveNumberStatistic(results, mistakes) {
     let data = Statistics.getStatistics();
-    // DAYS STATISTICS    
-    if ( data["Numbers"].length >0 && data["Numbers"][data["Numbers"].length - 1][0] == MyFiles.dateISO) {
+    // DAYS STATISTICS
+    if (
+      data["Numbers"].length > 0 &&
+      data["Numbers"][data["Numbers"].length - 1][0] == MyFiles.dateISO
+    ) {
       data["Numbers"][data["Numbers"].length - 1][1] += results[0];
       data["Numbers"][data["Numbers"].length - 1][2] += results[1];
       data["Numbers"][data["Numbers"].length - 1][3] += results[2];
@@ -143,6 +165,8 @@ class Statistics {
       whichMistakes = "numersMistakes";
     } else if (Espanol.page == "Words") {
       whichMistakes = "wordsMistakes";
+    } else if (Espanol.page == "Sentences") {
+      whichMistakes = "sentencesMistakes";
     }
     mistakes.forEach((item, index) => {
       if (data[whichMistakes][item["n"]]) {
@@ -176,6 +200,10 @@ class Statistics {
       case "Words":
         Statistics.removeCurrentTable(variable);
         Statistics.displayWords();
+        break;
+      case "Sentences":
+        Statistics.removeCurrentTable(variable);
+        Statistics.displaySentences();
         break;
     }
   }
