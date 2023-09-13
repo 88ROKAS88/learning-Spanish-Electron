@@ -75,6 +75,11 @@ class Results {
         [mistakes.length, correctAnswers, incorrectAnswers],
         mistakes
       );
+    }else{
+      Statistics.saveNumberStatistic(
+        [mistakes.length, correctAnswers, incorrectAnswers],
+        mistakes
+      );
     }
   }
 
