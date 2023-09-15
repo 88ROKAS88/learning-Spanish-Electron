@@ -52,6 +52,37 @@ class CreateElement {
     return div;
   }
 
+  // #### SEARCH INPUT ####
+  static searchInput() {
+    // DIV
+    let div = document.createElement("div");
+    div.classList.add("my-1", "input-group");
+
+    // SPAN
+    let span = document.createElement("span");
+    span.classList.add("input-group-text");
+    span.setAttribute("espanol", "SearchOutput");
+    span.innerText = "  ";
+
+    // INPUT
+    let input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("espanol", "SearchImput");
+    input.classList.add("form-control");
+
+    // BUTTON
+    let button = document.createElement("button");
+    button.setAttribute("type", "button");
+    button.setAttribute("espanol", "Search");
+    button.classList.add("btn", "btn-outline-secondary");
+    button.innerText = "Search";
+
+    div.appendChild(span);
+    div.appendChild(input);
+    div.appendChild(button);
+    return div;
+  }
+
   // #### QUESTION ####
   static question() {
     // DIV
@@ -100,7 +131,7 @@ class CreateElement {
     input.disabled = true;
 
     div.appendChild(span);
-    div.appendChild(input);    
+    div.appendChild(input);
     return div;
   }
 

@@ -39,6 +39,8 @@ class Vocabulary {
     container.appendChild(CreateElement.header1("Results", "VOCABULARY"));
 
     Espanol.app.appendChild(container);
+    // SEARCH
+    container.appendChild(CreateElement.searchInput());
     // NAV TABS
     container.appendChild(CreateElement.navTabs(["Numbers", "Words"]));
 
@@ -61,6 +63,25 @@ class Vocabulary {
       .classList.add("active");
   }
 
+  static search() {
+    let searchInput = document.querySelector('[espanol = "SearchImput"]').value;
+    let searchOutput = document.querySelector('[espanol = "SearchOutput"]');
+
+    if (Vocabulary.currentTab == "Numbers") {
+      MyData.numbers.forEach((element) => {
+        if (searchInput == element["s"]) {
+          searchOutput.innerText = element["n"] + " - " + element["e"];
+        }
+      });
+    } else {
+      MyData.words.forEach((element) => {
+        if (searchInput == element["s"]) {
+          searchOutput.innerText = element["n"] + " - " + element["e"];
+        }
+      });
+    }
+  }
+
   static run(variable) {
     console.log("Vocabulary " + variable);
 
@@ -75,6 +96,9 @@ class Vocabulary {
       case "Words":
         Vocabulary.removeCurrentTable(variable);
         Vocabulary.displayWords();
+        break;
+      case "Search":
+        Vocabulary.search();
         break;
     }
   }
