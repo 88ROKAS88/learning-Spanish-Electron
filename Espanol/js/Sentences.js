@@ -31,6 +31,29 @@ class Sentences {
     return hint;
   }
 
+  static updateHint(answer, correctAnswer) {
+    let hint = " ";
+    correctAnswer.forEach((item, index) => {
+      if (
+        answer[index].toLowerCase() == MyData.words[item]["s"].toLowerCase()
+      ) {
+        hint += MyData.words[item]["s"];
+      } else {
+        for (let i = 0; i < MyData.words[item]["s"].length; i++) {
+          if (i == 0) {
+            hint += MyData.words[item]["s"][i];
+          } else {
+            hint += "_ ";
+          }
+        }
+      }
+
+      hint += "   ";
+    });
+
+    Sentences.hint.value = hint;
+  }
+
   static display() {
     Espanol.page = "Sentences";
     let statisticsData = Statistics.getStatistics();
@@ -115,6 +138,7 @@ class Sentences {
         }
       } else {
         Sentences.mistakesForResults[Sentences.currentQuestion]["m"]++;
+        Sentences.updateHint(answerArray, correctAnswer);
         alert = new Alert("Incorrect answer", "alert-danger");
       }
     } else {
