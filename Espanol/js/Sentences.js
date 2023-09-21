@@ -128,6 +128,7 @@ class Sentences {
           );
         }
       });
+      // correct answer
       if (mistakes == 0) {
         Sentences.mistakesForResults[Sentences.currentQuestion]["c"]++;
         Sentences.currentQuestion++;
@@ -136,11 +137,24 @@ class Sentences {
         } else {
           Results.display(Sentences.mistakesForResults);
         }
+        // incorrect answer
       } else {
         Sentences.mistakesForResults[Sentences.currentQuestion]["m"]++;
-        Sentences.updateHint(answerArray, correctAnswer);
         alert = new Alert("Incorrect answer", "alert-danger");
+        // more than 3 mistakes
+        if (Sentences.mistakesForResults[Sentences.currentQuestion]["m"] > 2) {
+          Sentences.currentQuestion++;
+          if (Sentences.currentQuestion < Sentences.questions.length) {
+            Sentences.displayNextQuestion();
+          } else {
+            Results.display(Sentences.mistakesForResults);
+          }
+          // less than 3 mistakes
+        } else {
+          Sentences.updateHint(answerArray, correctAnswer);
+        }
       }
+      // wrong answer lenght
     } else {
       alert = new Alert(
         "Correct answer contains " +
