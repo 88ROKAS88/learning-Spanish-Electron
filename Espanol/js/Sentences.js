@@ -6,6 +6,7 @@ class Sentences {
   static counter;
   static question;
   static hint;
+  static health;
   static input;
 
   static showHint() {
@@ -89,6 +90,12 @@ class Sentences {
     Sentences.question.value =
       Sentences.questions[Sentences.currentQuestion]["e"];
 
+    Sentences.health = document.querySelector('[espanol = "Health"]');
+    Sentences.health.innerText =
+      Sentences.mistakesForResults[Sentences.currentQuestion]["m"] +
+      1 +
+      " / 3 ";
+
     Sentences.input = document.querySelector('[espanol = "AnswerImput"]');
   }
 
@@ -100,6 +107,11 @@ class Sentences {
 
     Sentences.question.value =
       Sentences.questions[Sentences.currentQuestion]["e"];
+
+    Sentences.health.innerText =
+      Sentences.mistakesForResults[Sentences.currentQuestion]["m"] +
+      1 +
+      " / 3 ";
 
     Sentences.input.value = "";
   }
@@ -152,6 +164,11 @@ class Sentences {
           // less than 3 mistakes
         } else {
           Sentences.updateHint(answerArray, correctAnswer);
+
+          Sentences.health.innerText =
+            Sentences.mistakesForResults[Sentences.currentQuestion]["m"] +
+            1 +
+            " / 3 ";
         }
       }
       // wrong answer lenght

@@ -102,13 +102,13 @@ class CreateElement {
     input.disabled = true;
 
     // SPAN
-    // let health = document.createElement("span");
-    // health.classList.add("input-group-text");
-    // health.setAttribute("espanol", "Health");
+    let health = document.createElement("span");
+    health.classList.add("input-group-text");
+    health.setAttribute("espanol", "Health");
 
     div.appendChild(span);
     div.appendChild(input);
-    // div.appendChild(health);
+    div.appendChild(health);
     return div;
   }
 
