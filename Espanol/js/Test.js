@@ -33,6 +33,8 @@ class Test {
       // IS INVALID
       input.classList.add("is-invalid");
       this.mistakes[this.currentQuestion]["m"]++;
+      this.gui.health.innerText =
+        this.mistakes[this.currentQuestion]["m"] + 1 + " / 3 ";
       //   Numbers.results[2]["b"]++;
 
       if (this.mistakes[this.currentQuestion]["m"] > 2) {
@@ -76,7 +78,14 @@ class Test {
     const question = document.querySelector('[espanol = "Question"]');
     question.value = this.questions[this.currentQuestion]["e"];
     const input = document.querySelector('[espanol = "AnswerImput"]');
+    const health = document.querySelector('[espanol = "Health"]');
+    health.innerText = this.mistakes[this.currentQuestion]["m"] + 1 + " / 3 ";
 
-    return { counter: counter, question: question, input: input };
+    return {
+      counter: counter,
+      question: question,
+      input: input,
+      health: health,
+    };
   }
 }
