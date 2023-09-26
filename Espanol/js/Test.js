@@ -11,6 +11,8 @@ class Test {
       this.currentQuestion + 1 + " / " + this.questions.length;
     this.gui["question"].value = this.questions[this.currentQuestion]["e"];
     this.gui["input"].value = "";
+    this.gui.health.innerText =
+    this.mistakes[this.currentQuestion]["m"] + 1 + " / 3 ";
   }
 
   validateAnswer(input) {
