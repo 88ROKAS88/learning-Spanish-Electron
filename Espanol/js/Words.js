@@ -23,9 +23,12 @@ class Words {
     console.log("WORDS " + variable);
     // console.log(document.querySelector('[espanol = "AnswerImput"]').value);
     if (variable == "Submit") {
-      Words.test.validateAnswer(
-        document.querySelector('[espanol = "AnswerImput"]')
-      );
+      let input = document.querySelector('[espanol = "AnswerImput"]');
+      if (input.value == "") {
+        let alert = new Alert("INPUT FIELD IS EMPTY", "alert-danger");
+      } else {
+        Words.test.validateAnswer(input);
+      }
     } else if (variable == "Back") {
       MainMenu.display();
     }
