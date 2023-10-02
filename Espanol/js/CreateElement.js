@@ -103,7 +103,7 @@ class CreateElement {
 
     // SPAN
     let health = document.createElement("span");
-    health.classList.add("input-group-text");
+    health.classList.add("input-group-text", "text-danger");
     health.setAttribute("espanol", "Health");
 
     div.appendChild(span);
