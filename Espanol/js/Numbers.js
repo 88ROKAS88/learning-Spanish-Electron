@@ -21,11 +21,13 @@ class Numbers {
 
   static run(variable) {
     console.log("NUMBERS " + variable);
-    // console.log(document.querySelector('[espanol = "AnswerImput"]').value);
     if (variable == "Submit") {
-      Numbers.test.validateAnswer(
-        document.querySelector('[espanol = "AnswerImput"]')
-      );
+      let input = document.querySelector('[espanol = "AnswerImput"]');
+      if (input.value == "") {
+        let alert = new Alert("INPUT FIELD IS EMPTY", "alert-danger");
+      } else {
+        Numbers.test.validateAnswer(input);
+      }
     } else if (variable == "Back") {
       MainMenu.display();
     }
